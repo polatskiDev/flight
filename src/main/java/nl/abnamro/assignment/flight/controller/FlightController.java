@@ -35,7 +35,8 @@ public class FlightController {
     public ResponseEntity<FlightPagedList> getFlights(@RequestParam("origin") String origin,
                                                       @RequestParam("destination") String destination,
                                                       @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-                                                      @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+                                                      @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                                      @RequestParam(name = "sort", required = false) String[] sort) {
 
         LOG.info("getFlights");
 
@@ -48,7 +49,7 @@ public class FlightController {
         }
 
         return new ResponseEntity<>(flightService.getFlightsWithOriginAndDestination(origin, destination
-                , PageRequest.of(pageNumber, pageSize))
+                , PageRequest.of(pageNumber, pageSize), sort)
                 , HttpStatus.OK);
     }
 }

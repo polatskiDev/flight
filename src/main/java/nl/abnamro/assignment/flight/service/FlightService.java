@@ -8,5 +8,5 @@ import org.springframework.data.domain.PageRequest;
  */
 public interface FlightService {
 
-    FlightPagedList getFlightsWithOriginAndDestination(String origin, String destination, PageRequest pageRequest);
+    FlightPagedList getFlightsWithOriginAndDestination(String origin, String destination, PageRequest pageRequest, String[] sort);
 }
